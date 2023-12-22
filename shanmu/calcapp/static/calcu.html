@@ -1,72 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Calculator</title>
-        <style type="text/css">
-        table{
-            border: 4px solid black;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 10px;
+        
+        <script>
+        function calculate(args)
+        {
+            res = document.getElementById("result");
+            expression = res.innerText;
+            cmd = args.srcElement.innerText;
+            if(cmd == "=")
+            {
+                expression = "" + eval(expression)
+            }
+            else if(cmd == "C")
+            {
+                expression=""
+            }
+            else if(cmd == "DEL")
+            {
+                expression = expression.slice(0, -1);
+
+            }
+            else if(cmd == "√")
+            {
+                expression = "" + Math.sqrt(eval(expression));
+            }
+            else if(cmd == "%")
+            {
+                expression = expression % 1;
+            }
+            else if(cmd == "log")
+             {
+        expression = Math.log10(expression);
+           }
+       
+            else{
+                expression = expression + cmd;
+            }
+            res.innerText = expression;
+            
 
         }
-        input[type="text"]{
-            border: 1px solid black;
-            padding: 20px 30px;
-            font-size: 24px;
-            font-weight: bold;
-            border-radius: 10px;
-        }
+         
+        </script>
 
+        <style>
+          
+            .calculator-container {
+                width: 400px;
+                background-color: rgb(25, 203, 159);
+                margin: 0 auto; 
+                margin-top: 250px;
+                text-align: center;
+                
+            }
 
-        input[type="button"]{
-            width: 100%;
-            padding: 20px 40px;
-            background-color:rgb(33, 207, 50);
-            border-radius: 10%;
-        }
+           
+            button {
+                width: 50px;
+                height: 50px;
+                margin: 10px; 
+                font-size: 20px; 
+                
+                background-color: black; 
+                color: white; 
+                border: none;
+            }
+
+          
+            #result {
+                
+       background-color:#ABFFBA;
+    text-align: right;
+    padding-right: 50px;
+    font-size: 20px;
+    margin-bottom: 20px; 
+    border: solid black 0.5px;
+    color: black;
+    width: 348px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+            }
+            h1 {
+                padding-top: 10px;
+                color:white;
+                font-size: 50px;
+            }
+            .redd {
+                background-color: brown;
+            }
+            .bluee {
+                
+                background-color: cornflowerblue;
+            }
+            body {
+                background-color: rgb(247, 240, 240);
+            }
+            h2 {
+                color: aquamarine;
+            }
         </style>
+
     </head>
-    <body>
-        <form name="form1" onload="result.value=''">
-            <h1 style="text-align: center;color:black;">Shanmugaraj Calculator <br> Register Number: 23000314</h1>
-        <table id="calc">
-            <tr>
-                <td colspan="4">
-                    <input type="text" id="result">
-                </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="1" onclick="result.value+='1'"/></td>
-                <td><input type="button" value="2" onclick="result.value+='2'"/></td>
-                <td><input type="button" value="3" onclick="result.value+='3'"/></td>
-                <td><input type="button" value="+" onclick="result.value+='+'"/></td>
-            </tr>
-            <tr>
-                <td><input type="button" value="4" onclick="result.value+='4'"/></td>
-                <td><input type="button" value="5" onclick="result.value+='5'"/></td>
-                <td><input type="button" value="6" onclick="result.value+='6'"/></td>
-                <td><input type="button" value="-" onclick="result.value+='-'"/></td>
-            </tr>
-            <tr>
-                <td><input type="button" value="7" onclick="result.value+='7'"/></td>
-                <td><input type="button" value="8" onclick="result.value+='8'"/></td>
-                <td><input type="button" value="9" onclick="result.value+='9'"/></td>
-                <td><input type="button" value="*" onclick="result.value+='*'"/></td>
-            </tr>
-            <tr>
-                <td><input type="button" value="/" onclick="result.value+='/'"/></td>
-                <td><input type="button" value="0" onclick="result.value+='0'"/></td>
-                <td><input type="button" value="." onclick="result.value+='.'"/></td>
-                <td><input type="button" value="=" onclick="result.value=eval(result.value)"/></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <input type="button" value="clearall" id="clear" onclick="result.value=''">
-                    <td><input type="button" value="%" onclick="result.value+='%'"/></td>
-                </td>
-            </tr>
-        </table>
-        </form>
-    </body>
+<body>
+    <div class="calculator-container">
+        <h1>Shanmugaraj</h1>
+        <h2>REG NO.:23000314</h2>
+        <div id="result">0</div>
+        <button onclick="calculate(event);">7</button>
+        <button onclick="calculate(event);">8</button>
+        <button onclick="calculate(event);">9</button>
+        <button class="bluee"  onclick="calculate(event);">/</button>
+        <button class="bluee"  onclick="calculate(event);"> DEL </button><br>
+        <button onclick="calculate(event);">4</button>
+        <button onclick="calculate(event);">5</button>
+        <button onclick="calculate(event);">6</button>
+        <button class="bluee"  onclick="calculate(event);">*</button>
+        <button class="bluee"  onclick="calculate(event);">&radic; </button><br>
+        <button onclick="calculate(event);">1</button>
+        <button onclick="calculate(event);">2</button>
+        <button onclick="calculate(event);">3</button>
+        <button class="bluee"  onclick="calculate(event);">-</button>
+        <button class="bluee"  onclick="calculate(event);">log</button><br>
+        <button onclick="calculate(event);">0</button>
+        <button onclick="calculate(event);">.</button>
+        <button class="redd" onclick="calculate(event);">C</button>
+        <button class="bluee"  onclick="calculate(event);">+</button>
+        <button class="bluee" onclick="calculate(event);">=</button><br>
+    </div>
+    </body>
 </html>
